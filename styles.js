@@ -4,8 +4,3 @@ var cssRules =
 var styleElement = document.createElement("style");
 styleElement.appendChild(document.createTextNode(cssRules));
 document.getElementsByTagName("head")[0].appendChild(styleElement);
-
-let coll = document.getElementsByClassName("navbar-brand");
-coll[0].innerHTML = "";
-let txt = document.createElement("p");
-coll[0].appendChild(txt);
