@@ -13,6 +13,10 @@ body {
   display: block;
 }
 
+.navbar .site-logo {
+  content: url("https://raw.githubusercontent.com/syvkst/eOppiva/main/sjalogo.png");
+}
+
 .navbar .navbar-nav .nav-link {
   color: #dee2e6 !important;
 }
