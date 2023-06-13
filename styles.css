@@ -60,6 +60,27 @@ hr {
   background-color: #dee2e6;
 }
 
+.toc1,
+.toc2 {
+  color: #dee2e6;
+  transition: 0.3s;
+}
+
+.toc1:hover {
+  text-decoration: none;
+  color: #19add8;
+}
+
+.toc2:hover {
+  text-decoration: none;
+  color: #9b7aba;
+}
+
+.toc1:active,
+.toc2:active {
+  text-decoration: none;
+}
+
 .block .block-controls .dropdown-toggle {
   color: #dee2e6;
 }
