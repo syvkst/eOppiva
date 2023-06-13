@@ -12,11 +12,14 @@ jobs:
   minify:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so auto-minify job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Auto Minify
       uses: nizarmah/auto-minify@v2.1
@@ -27,4 +30,3 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Github Action: Auto Minified JS and CSS files"
-        branch: ${{ github.ref }}
