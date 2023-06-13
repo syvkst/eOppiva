@@ -9,12 +9,13 @@ body {
   background-color: #252526;
 }
 
-.navbar #course-icon {
-  display: block;
+.navbar .site-logo {
+  content: url("https://raw.githubusercontent.com/syvkst/eOppiva/main/brand_logo.png");
+  transition: 0.3s;
 }
 
-.navbar .site-logo {
-  content: url("https://raw.githubusercontent.com/syvkst/eOppiva/main/sjalogo.png");
+.navbar .site-logo:hover {
+  opacity: 0.8;
 }
 
 .navbar .navbar-nav .nav-link {
