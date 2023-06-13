@@ -118,5 +118,5 @@ hr {
 }
 
 .format-onetopic a.nav-link .tab_content {
-  border-top: opx solid transparent;
+  border-top: 0px solid transparent;
 }
