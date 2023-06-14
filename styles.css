@@ -11,7 +11,10 @@
   --sy_aipa_blue: #19add8;
   --sy_aipa_purple: #9b7aba;
   --sy_aipa_green: #8dc63f;
+<<<<<<< HEAD
   --sy_aipa_yellow: #dfd400;
+=======
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
   --sy_shadow_1: rgba(0, 0, 0, 0.2);
   --sy_shadow_2: rgba(0, 0, 0, 0.19);
 }
@@ -21,6 +24,7 @@
 body {
   margin-left: 0px;
   color: var(--sy_light);
+<<<<<<< HEAD
 }
 
 p,
@@ -60,11 +64,14 @@ hr {
 
 .nav-link:focus {
   box-shadow: none;
+=======
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
 }
 
 .navbar {
   background-color: var(--sy_dark_1);
   box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
+<<<<<<< HEAD
   padding: 2.5rem 1rem;
   max-height: 80;
 }
@@ -84,6 +91,8 @@ hr {
 
 .pagelayout-course #page-header h1 {
   padding: 1rem 1.5rem;
+=======
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
 }
 
 .navbar .site-logo {
@@ -97,10 +106,13 @@ hr {
 
 .navbar .navbar-nav .nav-link {
   color: var(--sy_light) !important;
+<<<<<<< HEAD
   text-transform: uppercase;
   transition: 0.3s;
   font-family: "Open Sans", sans-serif;
   padding: 0.5rem;
+=======
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
 }
 
 .navbar .navbar-nav .nav-link:hover {
@@ -112,6 +124,7 @@ hr {
 }
 
 .course-banner-image {
+<<<<<<< HEAD
   position: relative;
   width: 100%;
   height: 20vw;
@@ -123,6 +136,9 @@ hr {
   flex: 1 0 auto;
   display: flex;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+=======
+  height: auto;
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
 }
 
 .pagelayout-course #page-header h1,
@@ -178,12 +194,40 @@ hr {
   padding: 10px;
   background-color: var(--sy_dark_3);
   box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
+<<<<<<< HEAD
+=======
+}
+
+p,
+a {
+  color: var(--sy_light);
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bitter", serif;
+  font-weight: 900;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+hr {
+  background-color: var(--sy_light);
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
 }
 
 .toc1,
 .toc2 {
   color: var(--sy_light);
+<<<<<<< HEAD
   color: var(--sy_light);
+=======
+>>>>>>> f19a019c7ee5fec0fc14066abc812c0394e72479
   transition: 0.3s;
 }
 
