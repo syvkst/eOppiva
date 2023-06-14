@@ -11,6 +11,7 @@
   --sy_aipa_blue: #19add8;
   --sy_aipa_purple: #9b7aba;
   --sy_aipa_green: #8dc63f;
+  --sy_aipa_yellow: #dfd400;
   --sy_shadow_1: rgba(0, 0, 0, 0.2);
   --sy_shadow_2: rgba(0, 0, 0, 0.19);
 }
@@ -22,9 +23,67 @@ body {
   color: var(--sy_light);
 }
 
+p,
+a {
+  color: var(--sy_light);
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--sy_aipa_yellow);
+}
+
+a:active {
+  text-decoration: none;
+  color: var(--sy_dark_purple);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bitter", serif;
+  font-weight: 900;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+hr {
+  background-color: var(--sy_light);
+}
+
+.nav-link:focus {
+  box-shadow: none;
+}
+
 .navbar {
   background-color: var(--sy_dark_1);
   box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
+  padding: 2.5rem 1rem;
+  max-height: 80;
+}
+
+#page-navbar {
+  display: none;
+}
+
+#page-header .card {
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+
+#page-header .card .flex-wrap {
+  display: none !important;
+}
+
+.pagelayout-course #page-header h1 {
+  padding: 1rem 1.5rem;
 }
 
 .navbar .site-logo {
@@ -38,6 +97,10 @@ body {
 
 .navbar .navbar-nav .nav-link {
   color: var(--sy_light) !important;
+  text-transform: uppercase;
+  transition: 0.3s;
+  font-family: "Open Sans", sans-serif;
+  padding: 0.5rem;
 }
 
 .navbar .navbar-nav .nav-link:hover {
@@ -49,7 +112,17 @@ body {
 }
 
 .course-banner-image {
-  height: auto;
+  position: relative;
+  width: 100%;
+  height: 20vw;
+  min-height: 350px;
+  margin-bottom: -120px;
+  margin-top: 80px;
+  background-color: transparent;
+  background-position: top;
+  flex: 1 0 auto;
+  display: flex;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .pagelayout-course #page-header h1,
@@ -82,32 +155,29 @@ body {
   margin-bottom: 0.6rem !important;
 }
 
+.dropdown-menu {
+  background-color: var(--sy_dark_4);
+  color: var(--sy_light);
+}
+
+.dropdown-item {
+  color: var(--sy_light);
+}
+
+.dropdown-item:hover,
+.dropdown-item:active {
+  background-color: var(--sy_dark_purple);
+}
+
+.dropdown-item:focus,
+.dropdown-item:focus-within {
+  background-color: transparent;
+}
+
 .h5p-placeholder {
   padding: 10px;
   background-color: var(--sy_dark_3);
   box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
-}
-
-p,
-a {
-  color: var(--sy_light);
-  font-family: "Open Sans", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Bitter", serif;
-  font-weight: 900;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-hr {
-  background-color: var(--sy_light);
 }
 
 .toc1,
