@@ -7,6 +7,10 @@ window.addEventListener("DOMContentLoaded", function () {
   document.getElementById("page-course-view-onetopic").style.display = "block";
 });
 
+window.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("page-course-view-onetopic").style.display = "block";
+});
+
 var styleElement = document.createElement("style");
 styleElement.appendChild(document.createTextNode(cssRules));
 document.getElementsByTagName("head")[0].appendChild(styleElement);

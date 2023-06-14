@@ -183,6 +183,7 @@ hr {
 .toc1,
 .toc2 {
   color: var(--sy_light);
+  color: var(--sy_light);
   transition: 0.3s;
 }
 
