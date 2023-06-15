@@ -178,6 +178,17 @@ hr {
   display: none;
 }
 
+.empty-region-side-post.used-region-side-pre #page-content .region-main {
+  flex: 1 1 80%;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.columnright {
+  display: none;
+}
+
 .pagelayout-course #page-header h1 {
   padding: 1rem 1.5rem;
 }
