@@ -178,10 +178,6 @@ hr {
   display: none;
 }
 
-#page-content .columnleft {
-  order: 1;
-}
-
 .pagelayout-course #page-header h1 {
   padding: 1rem 1.5rem;
 }
