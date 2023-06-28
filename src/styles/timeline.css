@@ -1,0 +1,109 @@
+.timeline {
+  width: 80%;
+  height: auto;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-content {
+  background: var(--sy_level_1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  color: var(--sy_light);
+  padding: 0.5rem 1.75rem 1.75rem 1.75rem;
+  overflow-wrap: break-word !important;
+  margin: 0 1rem 1rem 1rem;
+  border-radius: 6px;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.timeline-content.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.timeline-arrow {
+  display: block;
+  margin-left: 50%;
+  margin-bottom: 1em;
+  width: 17px;
+  height: 17px;
+  border: 6px solid var(--sy_red_regular);
+  border-left: 0;
+  border-top: 0;
+  opacity: 0;
+  transform-origin: bottom right;
+  -webkit-transform: translateX(-16px) rotate(45deg);
+  transform: translateX(-16px) rotate(45deg);
+  transition: all 2s ease 0.5s;
+}
+
+.timeline-arrow.active {
+  opacity: 1;
+}
+
+@media screen and (min-width: 700px) {
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr 3px 1fr;
+  }
+
+  .timeline-content-last {
+    grid-column: span 3;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 3px solid var(--sy_red_regular);
+  }
+
+  .timeline-middle {
+    position: relative;
+    background-image: linear-gradient(
+      45deg,
+      var(--sy_orange_regular),
+      var(--sy_red_regular),
+      var(--sy_purple_regular)
+    );
+    width: 3px;
+    height: 0%;
+    opacity: 0;
+    transition: 1s all ease;
+  }
+
+  .timeline-middle.active {
+    opacity: 1;
+    height: 100%;
+  }
+
+  .timeline-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-image: linear-gradient(
+      45deg,
+      var(--sy_orange_regular),
+      var(--sy_red_regular),
+      var(--sy_purple_regular)
+    );
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+
+  .timeline-circle.active {
+    opacity: 1;
+  }
+
+  .timeline-arrow {
+    display: none;
+  }
+}
