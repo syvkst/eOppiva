@@ -50,6 +50,7 @@
   --sy_grey_A_900: #101216;
 
   --sy_light: #dee2e6;
+  --sy_light_darker: rgba(222, 226, 230, 0.8);
 
   --sy_shadow_1: rgba(0, 0, 0, 0.2);
   --sy_shadow_2: rgba(0, 0, 0, 0.19);
@@ -67,6 +68,8 @@
   --sy_level_3: var(--sy_grey_A_600);
   --sy_level_4: var(--sy_grey_A_regular);
   --sy_level_5: var(--sy_grey_A_400);
+  --sy_level_6: var(--sy_grey_A_300);
+  --sy_level_7: var(--sy_grey_A_200);
 
   --sy_level_1_hover: var(--sy_blue_900);
   --sy_level_2_hover: var(--sy_orange_regular);
@@ -74,8 +77,10 @@
   /* Fonts */
   --sy_heading_font: "IBM Plex Sans", sans-serif;
   --sy_paragraph_font: "Open Sans", sans-serif;
+  --sy_quote_font: "Open Sans", sans-serif;
   --sy_heading_weight: 700;
   --sy_font_color: var(--sy_light);
+  --sy_quote_color: var(--sy__light_darker);
 }
 
 /* ANIMATIONS */
@@ -161,6 +166,26 @@ h6 {
 
 hr {
   background-color: var(--sy_font_color);
+}
+
+blockquote {
+  margin: 1em 2rem 1em 2rem;
+  padding: 0.5em 1em;
+  color: var(--sy_font_color);
+  background: linear-gradient(
+    0.25turn,
+    var(--sy_level_1),
+    var(--sy_level_3) 2%,
+    var(--sy_level_3) 98%,
+    var(--sy_level_1)
+  );
+  font-family: var(--sy_heading_font);
+  font-style: italic;
+  font-weight: 500;
+  border-left: 2px solid var(--sy_blue_regular);
+  border-right: 2px solid var(--sy_blue_regular);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
 }
 
 /* PAGE */
@@ -298,6 +323,10 @@ nav ul li a[href="https://lms.eoppiva.fi/?redirect=0"]
 #region-main,
 .card {
   background-color: var(--sy_level_1);
+}
+
+#region-main {
+  padding-bottom: 1rem;
 }
 
 /* Breadcrumbs */
@@ -486,6 +515,10 @@ a.dropdown-toggle:focus {
   outline: none;
 }
 
+.course-content .single-section .section-navigation {
+  padding-bottom: 2em;
+}
+
 #course_format_onetopic_config_movesection {
   margin-top: 1rem;
   margin-left: 2rem;
@@ -506,6 +539,21 @@ a.dropdown-toggle:focus {
   padding: 10px;
   background-color: var(--sy_grey_A_700);
   box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
+}
+
+.dramatic-fade-in {
+  animation-name: dramatic-fade-in;
+  animation-duration: 45;
+  animation-delay: 2s;
+}
+
+@keyframes dramatic-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Remove help button */

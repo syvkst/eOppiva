@@ -13,22 +13,35 @@ class Slideshow {
 
 function showSlide(instance) {
   const slideshow = document.getElementById(instance.id);
-
   const slides = slideshow.querySelectorAll(".slide");
   const dots = slideshow
     .querySelector(".slide-dot-container")
     .querySelectorAll(".slide-dot");
+  const next = slideshow.querySelector(".slide-next");
+  const prev = slideshow.querySelector(".slide-prev");
 
   for (let slide of slides) {
-    slide.classList.remove("slide-show");
+    slide.style.display = "none";
   }
 
   for (let dot of dots) {
     dot.classList.remove("active");
   }
 
-  slides[instance.currentSlide].classList.add(".slide-show");
+  slides[instance.currentSlide].style.display = "block";
   dots[instance.currentSlide].classList.add("active");
+
+  if (instance.currentSlide === 0) {
+    prev.classList.add("slide-navigation-disabled");
+  } else {
+    prev.classList.remove("slide-navigation-disabled");
+  }
+
+  if (instance.currentSlide === instance.slideCount - 1) {
+    next.classList.add("slide-navigation-disabled");
+  } else {
+    next.classList.remove("slide-navigation-disabled");
+  }
 }
 
 function initializeSlideshows() {
@@ -47,13 +60,11 @@ function initializeSlideshows() {
     prevButton.classList.add("slide-prev");
     prevButton.innerHTML = "&#10094;";
     prevButton.onclick = () => {
-      slideshow.currentSlide -= 1;
-
-      if (slideshow.currentSlide < 0) {
-        slideshow.currentSlide = slideshow.slideCount - 1;
-      } else if (slideshow.currentSlide > slideshow.slideCount - 1) {
-        slideshow.currentSlide = 0;
+      if (slideshow.currentSlide < 1) {
+        return;
       }
+
+      slideshow.currentSlide -= 1;
 
       showSlide(slideshow);
     };
@@ -62,14 +73,13 @@ function initializeSlideshows() {
 
     let nextButton = document.createElement("a");
     nextButton.classList.add("slide-next");
-    prevButton.onclick = () => {
-      slideshow.currentSlide += 1;
-
-      if (slideshow.currentSlide < 0) {
-        slideshow.currentSlide = slideshow.slideCount - 1;
-      } else if (slideshow.currentSlide > slideshow.slideCount - 1) {
-        slideshow.currentSlide = 0;
+    nextButton.innerHTML = "&#10095;";
+    nextButton.onclick = () => {
+      if (slideshow.currentSlide >= slideshow.slideCount - 1) {
+        return;
       }
+
+      slideshow.currentSlide += 1;
 
       showSlide(slideshow);
     };
@@ -90,6 +100,7 @@ function initializeSlideshows() {
     }
 
     slideshows[i].appendChild(dotContainer);
+    showSlide(slideshow);
   }
 }
 

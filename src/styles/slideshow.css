@@ -1,16 +1,21 @@
 .slideshow {
-  max-width: 90%;
+  width: 90%;
   position: relative;
   margin: auto;
 }
 
 .slide {
   display: none;
-  margin-bottom: 30px;
+  animation-name: slide-fade;
+  animation-duration: 1.5s;
 }
 
-.slide-show {
-  display: block;
+.slide-basic {
+  height: 80vh;
+  background-color: var(--sy_level_2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1em;
+  container-type: inline-size;
 }
 
 .slide-prev,
@@ -19,9 +24,9 @@
   position: absolute;
   top: 50%;
   width: auto;
-  margin-top: -22px;
+  margin-top: -37px;
   padding: 16px;
-  color: var(--sy_light);
+  color: var(--sy_font_color);
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
@@ -34,17 +39,52 @@
   border-radius: 3px 0 0 3px;
 }
 
+.slide-navigation-disabled {
+  color: var(--sy_level_5) !important;
+  cursor: default;
+}
+
+.slide-navigation-disabled:hover {
+  background-color: transparent !important;
+}
+
 .slide-prev:hover,
 .slide-next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(222, 226, 230, 0.4);
 }
 
 .slide-title {
-  position: absolute;
-  top: 2%;
-  left: 2%;
+  display: block;
   max-width: 80%;
   max-height: 20%;
+}
+
+.slide-content {
+  display: block;
+  width: 90%;
+  margin: 30px 5%;
+  font-size: 2cqw;
+}
+
+@media (max-width: 700px) {
+  .slideshow {
+    width: 100%;
+  }
+
+  .slide-basic {
+    container-type: none;
+    height: auto;
+  }
+
+  .slide-title {
+    max-width: 90%;
+  }
+
+  .slide-content {
+    font-size: inherit;
+    width: 80%;
+    margin: 20px 10%;
+  }
 }
 
 .slide-dot-container {
@@ -59,7 +99,7 @@
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: var(--sy_level_2);
+  background-color: var(--sy_level_5);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
@@ -67,17 +107,12 @@
 
 .slide-dot:hover,
 .slide-dot.active {
-  background-color: var(--sy_level_1);
-}
-
-.slide-fade {
-  animation-name: slide-fade;
-  animation-duration: 1.5s;
+  background-color: var(--sy_level_6);
 }
 
 @keyframes slide-fade {
   from {
-    opacity: 0.4;
+    opacity: 0.1;
   }
   to {
     opacity: 1;
