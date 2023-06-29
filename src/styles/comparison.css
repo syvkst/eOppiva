@@ -1,0 +1,29 @@
+.comparison {
+  position: relative;
+  width: 90%;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 var(--sy_shadow_1), 0 6px 20px 0 var(--sy_shadow_2);
+}
+
+.comparison-container {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.comparison-object,
+.comparison-container img {
+  display: block;
+}
+
+.comparison-slider {
+  position: absolute;
+  z-index: 9;
+  cursor: ew-resize;
+  width: 40px;
+  height: 40px;
+  background-color: var(--sy_red_regular);
+  opacity: 0.7;
+  border-radius: 50%;
+}
