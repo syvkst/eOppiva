@@ -1,59 +1,55 @@
 const comparisonRules =
-  ".comparison{position:relative;width:90%;height:500px;border-radius:10px;box-shadow:0 4px 8px 0 var(--sy_shadow_1),0 6px 20px 0 var(--sy_shadow_2)}.comparison-container{position:absolute;width:100%;overflow:hidden}.comparison-container img,.comparison-object{display:block}.comparison-slider{position:absolute;z-index:9;cursor:ew-resize;width:40px;height:40px;background-color:var(--sy_red_regular);opacity:.7;border-radius:50%}";
+  ".comparison{position:relative;width:90%}.comparison-image{background-position:top left;background-repeat:no-repeat;background-size:auto 100%;left:0;position:absolute;top:0;height:100%;width:50%}.resizer{left:50%;position:absolute;top:0;height:100%;width:2px;background-color:#cbd5e0;cursor:ew-resize}";
 
-function compare(obj) {
-  const width = obj.offsetWidth;
-  const height = obj.offsetHeight;
+function initializeComparison() {
+  // Query the element
+  const resizer = document.getElementById("dragMe");
+  const leftSide = resizer.previousElementSibling;
 
-  obj.style.width = width / 2 + "px";
+  // The current position of mouse
+  let x = 0;
+  let y = 0;
 
-  const slider = document.createElement("div");
-  slider.classList.add("comparison-slider");
+  // The width of modified element
+  let leftWidth = 0;
 
-  obj.parentElement.insertBefore(slider, obj);
-  slider.style.top = height / 2 - slider.offsetHeight / 2 + "px";
-  slider.style.left = width / 2 - slider.offsetWidth / 2 + "px";
+  const mouseUpHandler = function (e) {
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.removeEventListener("mouseup", mouseUpHandler);
+  };
 
-  slider.addEventListener("mousedown", slideActivate);
-  slider.addEventListener("touchstart", slideActivate);
-  window.addEventListener("mouseup", slideDeactivate);
-  window.addEventListener("touchend", slideDeactivate);
+  // Handle the mousedown event
+  // that's triggered when user drags the resizer
+  const mouseDownHandler = function (e) {
+    // Get the current mouse position
+    x = e.clientX;
+    y = e.clientY;
+    leftWidth = leftSide.getBoundingClientRect().width;
 
-  function slideActivate(e) {
-    e.preventDefault();
-    window.addEventListener("mousemove", slideMove);
-    window.addEventListener("touchmove", slideMove);
-  }
+    // Attach the listeners to `document`
+    document.addEventListener("mousemove", mouseMoveHandler);
+    document.addEventListener("mouseup", mouseUpHandler);
+  };
 
-  function slideDeactivate() {
-    slider.removeEventListener("mousedown", slideActivate);
-    slider.removeEventListener("touchstart", slideActivate);
-    window.removeEventListener("mouseup", slideDeactivate);
-    window.removeEventListener("touchend", slideDeactivate);
-  }
+  const mouseMoveHandler = function (e) {
+    // How far the mouse has been moved
+    const dx = e.clientX - x;
+    const dy = e.clientY - y;
 
-  function slideMove(e) {
-    e = e.changedTouches ? e.changedTouches[0] : e;
+    let newLeftWidth =
+      ((leftWidth + dx) * 100) /
+      resizer.parentNode.getBoundingClientRect().width;
+    newLeftWidth = Math.max(newLeftWidth, 0);
+    newLeftWidth = Math.min(newLeftWidth, 100);
 
-    const rectangle = obj.getBoundingClientRect();
+    // Set the width for modified and resizer elements
+    leftSide.style.width = `${newLeftWidth}%`;
+    resizer.style.left = `${newLeftWidth}%`;
+  };
 
-    let position = e.pageX - rectangle.left;
-    position = position - window.scrollX;
-
-    if (position < 0) position = 0;
-    if (position > width) position = width;
-
-    obj.style.width = position + "px";
-    slider.style.left = obj.offsetWidth - slider.offsetWidth / 2 + "px";
-  }
-}
-
-function initializeComparisons() {
-  const overlays = document.getElementsByClassName("comparison-overlay");
-  for (let overlay of overlays) {
-    compare(overlay);
-  }
+  // Attach the handler
+  resizer.addEventListener("mousedown", mouseDownHandler);
 }
 
 insertStyle(comparisonRules);
-initializeComparisons();
+initializeComparison();
