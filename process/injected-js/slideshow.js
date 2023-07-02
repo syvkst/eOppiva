@@ -1,5 +1,5 @@
 const slideshowRules =
-  ".slideshow{width:90%;position:relative;margin:auto}.slide{display:none;animation-name:slide-fade;animation-duration:1.5s}.slide-basic{height:80vh;background-color:var(--sy_level_2);box-shadow:0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);padding:1em;container-type:inline-size}.slide-next,.slide-prev{cursor:pointer;position:absolute;top:50%;width:auto;margin-top:-37px;padding:16px;color:var(--sy_font_color);font-weight:700;font-size:18px;transition:.6s ease;border-radius:0 3px 3px 0;user-select:none}.slide-next{right:0;border-radius:3px 0 0 3px}.slide-navigation-disabled{color:var(--sy_level_5)!important;cursor:default}.slide-navigation-disabled:hover{background-color:transparent!important}.slide-next:hover,.slide-prev:hover{background-color:rgba(222,226,230,.4)}.slide-title{display:block;max-width:80%;max-height:20%}.slide-content{display:block;width:90%;margin:30px 5%;font-size:2cqw}.slide-content img{max-width:100%}@media (max-width:700px){.slideshow{width:100%}.slide-basic{container-type:none;height:auto}.slide-title{max-width:90%}.slide-content{font-size:inherit;width:80%;margin:20px 10%}}.slide-dot-container{display:block;margin:1em 0;width:100%;text-align:center}.slide-dot{cursor:pointer;height:15px;width:15px;margin:0 2px;background-color:var(--sy_level_5);border-radius:50%;display:inline-block;transition:background-color .6s ease}.slide-dot.active,.slide-dot:hover{background-color:var(--sy_level_6)}@keyframes slide-fade{from{opacity:.1}to{opacity:1}}";
+  ".slideshow{width:90%;position:relative;margin:auto}.slide{display:none;animation-name:slide-fade-left;animation-duration:.8s}.slide-right{animation-name:slide-fade-right}.slide-basic{height:80vh;background-color:var(--sy_level_2);box-shadow:0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);padding:1em;container-type:inline-size}.slide-next,.slide-prev{cursor:pointer;position:absolute;top:50%;width:auto;margin-top:-37px;padding:16px;color:var(--sy_font_color);font-weight:700;font-size:18px;transition:.6s ease;border-radius:0 3px 3px 0;user-select:none}.slide-next{right:0;border-radius:3px 0 0 3px}.slide-navigation-disabled{color:var(--sy_level_5)!important;cursor:default}.slide-navigation-disabled:hover{background-color:transparent!important}.slide-next:hover,.slide-prev:hover{background-color:rgba(222,226,230,.4)}.slide-title{display:block;max-width:80%;max-height:20%}.slide-content{display:block;width:90%;margin:30px 5%;font-size:2cqw}.slide-content img{max-width:100%}@media (max-width:700px){.slideshow{width:100%}.slide-basic{container-type:none;height:auto}.slide-title{max-width:90%}.slide-content{font-size:inherit;width:80%;margin:20px 10%}}.slide-dot-container{display:block;margin:1em 0;width:100%;text-align:center}.slide-dot{cursor:pointer;height:15px;width:15px;margin:0 2px;background-color:var(--sy_level_5);border-radius:50%;display:inline-block;transition:background-color .6s ease}.slide-dot.active,.slide-dot:hover{background-color:var(--sy_level_6)}@keyframes slide-fade-left{from{transform:translate(-100%);opacity:0}to{transform:translate(0);opacity:1}}@keyframes slide-fade-right{from{transform:translate(100%);opacity:0}to{transform:translate(0);opacity:1}}";
 
 class Slideshow {
   id;
@@ -11,7 +11,7 @@ class Slideshow {
   }
 }
 
-function showSlide(instance) {
+function showSlide(instance, lastSlide) {
   const slideshow = document.getElementById(instance.id);
   const slides = slideshow.querySelectorAll(".slide");
   const dots = slideshow
@@ -28,6 +28,10 @@ function showSlide(instance) {
     dot.classList.remove("active");
   }
 
+  slides[instance.currentSlide].classList.toggle(
+    "slide-right",
+    lastSlide < instance.currentSlide
+  );
   slides[instance.currentSlide].style.display = "block";
   dots[instance.currentSlide].classList.add("active");
 
@@ -64,9 +68,10 @@ function initializeSlideshows() {
         return;
       }
 
+      let lastSlide = slideshow.currentSlide;
       slideshow.currentSlide -= 1;
 
-      showSlide(slideshow);
+      showSlide(slideshow, lastSlide);
     };
 
     slideshows[i].appendChild(prevButton);
@@ -79,9 +84,10 @@ function initializeSlideshows() {
         return;
       }
 
+      let lastSlide = slideshow.currentSlide;
       slideshow.currentSlide += 1;
 
-      showSlide(slideshow);
+      showSlide(slideshow, lastSlide);
     };
 
     slideshows[i].appendChild(nextButton);

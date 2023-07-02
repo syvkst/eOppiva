@@ -11,7 +11,7 @@ class Slideshow {
   }
 }
 
-function showSlide(instance) {
+function showSlide(instance, lastSlide) {
   const slideshow = document.getElementById(instance.id);
   const slides = slideshow.querySelectorAll(".slide");
   const dots = slideshow
@@ -28,6 +28,10 @@ function showSlide(instance) {
     dot.classList.remove("active");
   }
 
+  slides[instance.currentSlide].classList.toggle(
+    "slide-right",
+    lastSlide < instance.currentSlide
+  );
   slides[instance.currentSlide].style.display = "block";
   dots[instance.currentSlide].classList.add("active");
 
@@ -64,9 +68,10 @@ function initializeSlideshows() {
         return;
       }
 
+      let lastSlide = slideshow.currentSlide;
       slideshow.currentSlide -= 1;
 
-      showSlide(slideshow);
+      showSlide(slideshow, lastSlide);
     };
 
     slideshows[i].appendChild(prevButton);
@@ -79,9 +84,10 @@ function initializeSlideshows() {
         return;
       }
 
+      let lastSlide = slideshow.currentSlide;
       slideshow.currentSlide += 1;
 
-      showSlide(slideshow);
+      showSlide(slideshow, lastSlide);
     };
 
     slideshows[i].appendChild(nextButton);

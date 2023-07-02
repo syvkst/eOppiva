@@ -6,8 +6,12 @@
 
 .slide {
   display: none;
-  animation-name: slide-fade;
-  animation-duration: 1.5s;
+  animation-name: slide-fade-left;
+  animation-duration: 0.8s;
+}
+
+.slide-right {
+  animation-name: slide-fade-right;
 }
 
 .slide-basic {
@@ -114,11 +118,24 @@
   background-color: var(--sy_level_6);
 }
 
-@keyframes slide-fade {
+@keyframes slide-fade-left {
   from {
-    opacity: 0.1;
+    transform: translate(-100%);
+    opacity: 0;
   }
   to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-fade-right {
+  from {
+    transform: translate(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0);
     opacity: 1;
   }
 }
