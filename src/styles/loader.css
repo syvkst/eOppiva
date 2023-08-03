@@ -31,7 +31,11 @@
 .wave {
   width: 5px;
   height: 100px;
-  background: linear-gradient(45deg, var(--sy_purple_800), var(--sy_light));
+  background: linear-gradient(
+    45deg,
+    var(--sy_purple_800),
+    var(--sy_font_color)
+  );
   margin: 10px;
   animation: wave 1s linear infinite;
   border-radius: 20px;

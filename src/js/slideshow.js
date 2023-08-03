@@ -25,7 +25,7 @@ function showSlide(instance, lastSlide) {
   }
 
   for (let dot of dots) {
-    dot.classList.remove("active");
+    dot.classList.remove("slide-dot-active");
   }
 
   slides[instance.currentSlide].classList.toggle(
@@ -33,7 +33,7 @@ function showSlide(instance, lastSlide) {
     lastSlide < instance.currentSlide
   );
   slides[instance.currentSlide].style.display = "block";
-  dots[instance.currentSlide].classList.add("active");
+  dots[instance.currentSlide].classList.add("slide-dot-active");
 
   if (instance.currentSlide === 0) {
     prev.classList.add("slide-navigation-disabled");

@@ -32,7 +32,7 @@
 .accordion:hover {
   border: none;
   outline: none;
-  background-color: var(--sy_red_regular);
+  background-color: var(--sy_element_hover);
 }
 
 .accordion:active::before,
@@ -47,6 +47,7 @@
 }
 
 .accordion-panel {
+  display: block;
   padding: 0 1.5rem;
   background-color: var(--sy_level_4);
   max-height: 0;

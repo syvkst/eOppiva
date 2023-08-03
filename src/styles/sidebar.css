@@ -141,7 +141,7 @@
 }
 
 .sidemenu-button:hover {
-  background-color: var(--sy_level_5);
+  background-color: var(--sy_sidemenu_hover);
 }
 
 .sidemenu-button:focus {
@@ -160,4 +160,14 @@
 
 .icon-hidden {
   opacity: 0;
+}
+
+.block_mmquicklink ul.collapse {
+  margin-bottom: 5px;
+}
+
+.block_mmquicklink ul.collapse a,
+.block_mmquicklink ul.collapse button {
+  width: 100%;
+  padding: 0.5rem 0rem;
 }

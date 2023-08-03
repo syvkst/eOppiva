@@ -7,7 +7,7 @@
 .slide {
   display: none;
   animation-name: slide-fade-left;
-  animation-duration: 0.8s;
+  animation-duration: 0.3s;
 }
 
 .slide-right {
@@ -15,7 +15,7 @@
 }
 
 .slide-basic {
-  height: 80vh;
+  min-height: 80vh;
   background-color: var(--sy_level_2);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 1em;
@@ -114,7 +114,7 @@
 }
 
 .slide-dot:hover,
-.slide-dot.active {
+.slide-dot-active {
   background-color: var(--sy_level_6);
 }
 

@@ -9,9 +9,9 @@ function revealTimeline(selectors, elementVisible = 150) {
     let elementTop = toReveal[i].getBoundingClientRect().top;
 
     if (elementTop < windowHeight - elementVisible) {
-      toReveal[i].classList.add("active");
+      toReveal[i].classList.add("show");
     } else {
-      toReveal[i].classList.remove("active");
+      toReveal[i].classList.remove("show");
     }
   }
 }

@@ -70,12 +70,12 @@ function initializeSidebar(menuIconUrl, closeMenuIconUrl) {
     sidebarBtn.onclick = handleSidebar;
 
     const menuIcon = document.createElement("img");
-    menuIcon.classList.add("sidemenu-icon");
+    menuIcon.classList.add("sidemenu-icon", "themed");
     menuIcon.id = "sidebar-menu-icon";
     menuIcon.src = menuIconUrl;
 
     const closeMenuIcon = document.createElement("img");
-    closeMenuIcon.classList.add("sidemenu-icon", "icon-hidden");
+    closeMenuIcon.classList.add("sidemenu-icon", "icon-hidden", "themed");
     closeMenuIcon.id = "sidebar-close-menu-icon";
     closeMenuIcon.src = closeMenuIconUrl;
 
@@ -87,5 +87,32 @@ function initializeSidebar(menuIconUrl, closeMenuIconUrl) {
   }
 }
 
+function addQuickButtons() {
+  const settingsList = document.getElementById("collapse-editcoursesettings");
+
+  if (settingsList) {
+    const settingButton = document.createElement("a");
+    settingButton.classList.add("btn", "btn-secondary");
+    settingButton.href = `https://lms.eoppiva.fi/course/edit.php?id=${M.cfg.courseId}`;
+    settingButton.innerHTML = "Kurssin asetukset";
+
+    settingsList.appendChild(settingButton);
+    settingsList.classList.add("show");
+  }
+
+  const participantsList = document.getElementById("collapse-participants");
+
+  if (participantsList) {
+    const partButton = document.createElement("a");
+    partButton.classList.add("btn", "btn-secondary");
+    partButton.href = `https://lms.eoppiva.fi/user/index.php?id=${M.cfg.courseId}`;
+    partButton.innerHTML = "Osallistujat";
+
+    participantsList.appendChild(partButton);
+    participantsList.classList.add("show");
+  }
+}
+
 insertStyle(sidebarRules);
 initializeSidebar(valikko, sulje);
+addQuickButtons();

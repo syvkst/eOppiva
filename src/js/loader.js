@@ -15,7 +15,7 @@ function initializeLoader() {
 
   document.addEventListener("click", (e) => {
     const origin = e.target.closest(
-      ".nav-link, .toc1, .toc2, .section-navigation"
+      ".nav-link:not(.dropdown-toggle):not(.chooser-container *):not(.active), .toc1, .toc2, .section-navigation:not(.dropdown-toggle)"
     );
 
     if (origin) {

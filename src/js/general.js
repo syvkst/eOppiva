@@ -28,6 +28,59 @@ function createCourseSubheader() {
   }
 }
 
+function findThemeSetting(localStorageTheme, systemSettingDark) {
+  if (localStorageTheme) {
+    return localStorageTheme;
+  }
+
+  if (systemSettingDark.matches) {
+    return "dark";
+  }
+
+  return "light";
+}
+
+function updateThemeImages(theme) {
+  const themeImages = document.querySelectorAll("img.themed");
+  for (let img of themeImages) {
+    if (theme === "dark") {
+      img.src = img.dataset.dark ? img.dataset.dark : img.src;
+      continue;
+    }
+
+    img.src = img.dataset.light ? img.dataset.light : img.src;
+  }
+}
+
+function updateTheme(theme) {
+  document.querySelector("html").setAttribute("data-sytheme", theme);
+  updateThemeImages(theme);
+}
+
+function initializeTheme() {
+  const localStorageTheme = localStorage.getItem("sytheme");
+  const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const currentThemeSetting = findThemeSetting(
+    localStorageTheme,
+    systemSettingDark
+  );
+  updateTheme(currentThemeSetting);
+
+  const themeInput = document.querySelector(".theme-toggle label input");
+  if (!themeInput) {
+    return;
+  }
+
+  themeInput.checked = currentThemeSetting === "dark" ? false : true;
+
+  themeInput.addEventListener("change", function () {
+    let theme = this.checked ? "light" : "dark";
+    localStorage.setItem("sytheme", theme);
+    updateTheme(theme);
+  });
+}
+
 document.getElementById("page-course-view-onetopic").style.display = "none";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -35,4 +88,5 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 createStyle();
+initializeTheme();
 createCourseSubheader();
