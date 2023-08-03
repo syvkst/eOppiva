@@ -2,7 +2,10 @@ table {
   width: 90%;
   margin: auto;
   text-align: left;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--sy_shadow_1_x) var(--sy_shadow_1_y) var(--sy_shadow_1_blur)
+      var(--sy_shadow_1_spread) var(--sy_shadow_1_color),
+    var(--sy_shadow_2_x) var(--sy_shadow_2_y) var(--sy_shadow_2_blur)
+      var(--sy_shadow_2_spread) var(--sy_shadow_2_color);
 }
 
 th,
@@ -22,11 +25,11 @@ tr {
 }
 
 tr:nth-child(even) {
-  background-color: var(--sy_level_2);
+  background-color: var(--sy_tablerow_even_bg);
 }
 
 tr:hover {
-  background-color: var(--sy_red_regular);
+  background-color: var(--sy_element_hover);
 }
 
 .tr-header {
@@ -36,7 +39,7 @@ tr:hover {
 
 .td-check {
   font-family: var(--sy_heading_font);
-  color: var(--sy_aipa_green);
+  color: var(--sy_table_checkmark_color);
   transition: all 0.3s;
 }
 

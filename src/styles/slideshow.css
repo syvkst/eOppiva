@@ -17,7 +17,10 @@
 .slide-basic {
   min-height: 80vh;
   background-color: var(--sy_level_2);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--sy_shadow_1_x) var(--sy_shadow_1_y) var(--sy_shadow_1_blur)
+      var(--sy_shadow_1_spread) var(--sy_shadow_1_color),
+    var(--sy_shadow_2_x) var(--sy_shadow_2_y) var(--sy_shadow_2_blur)
+      var(--sy_shadow_2_spread) var(--sy_shadow_2_color);
   padding: 1em;
   container-type: inline-size;
 }

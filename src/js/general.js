@@ -53,6 +53,7 @@ function updateThemeImages(theme) {
 }
 
 function updateTheme(theme) {
+  localStorage.setItem("sytheme", theme);
   document.querySelector("html").setAttribute("data-sytheme", theme);
   updateThemeImages(theme);
 }
@@ -76,7 +77,6 @@ function initializeTheme() {
 
   themeInput.addEventListener("change", function () {
     let theme = this.checked ? "light" : "dark";
-    localStorage.setItem("sytheme", theme);
     updateTheme(theme);
   });
 }
@@ -85,6 +85,8 @@ document.getElementById("page-course-view-onetopic").style.display = "none";
 
 window.addEventListener("DOMContentLoaded", function () {
   document.getElementById("page-course-view-onetopic").style.display = "block";
+  const localStorageTheme = localStorage.getItem("sytheme");
+  updateThemeImages(localStorageTheme);
 });
 
 createStyle();
