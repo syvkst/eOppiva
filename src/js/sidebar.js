@@ -1,6 +1,15 @@
 const sidebarRules =
   "# inject:../../process/min-styles/sidebar.min.css -> <- end #";
 
+const menuIconUrl =
+  "https://raw.githubusercontent.com/syvkst/eOppiva/main/dist/img/menu-icon.png";
+const menuIconLightUrl =
+  "https://raw.githubusercontent.com/syvkst/eOppiva/main/dist/img/menu-icon-light.png";
+const closeMenuIconUrl =
+  "https://raw.githubusercontent.com/syvkst/eOppiva/main/dist/img/menu-close-icon.png";
+const closeMenuIconLightUrl =
+  "https://raw.githubusercontent.com/syvkst/eOppiva/main/dist/img/menu-close-icon-light.png";
+
 function handleSidebar() {
   const leftColumn = document.getElementsByClassName("columnleft")[0];
   const mainRegion = document.getElementById("region-main-box");
@@ -54,7 +63,7 @@ function initialSidebarPosition() {
   }
 }
 
-function initializeSidebar(menuIconUrl, closeMenuIconUrl) {
+function initializeSidebar() {
   if (document.getElementsByClassName("columnleft")[0]) {
     const body = document.getElementById("page-course-view-onetopic");
 
@@ -73,11 +82,15 @@ function initializeSidebar(menuIconUrl, closeMenuIconUrl) {
     menuIcon.classList.add("sidemenu-icon", "themed");
     menuIcon.id = "sidebar-menu-icon";
     menuIcon.src = menuIconUrl;
+    menuIcon.dataset.light = menuIconLightUrl;
+    menuIcon.dataset.dark = menuIconUrl;
 
     const closeMenuIcon = document.createElement("img");
     closeMenuIcon.classList.add("sidemenu-icon", "icon-hidden", "themed");
     closeMenuIcon.id = "sidebar-close-menu-icon";
     closeMenuIcon.src = closeMenuIconUrl;
+    closeMenuIcon.dataset.light = closeMenuIconLightUrl;
+    closeMenuIcon.dataset.dark = closeMenuIconUrl;
 
     sidebarBtn.appendChild(menuIcon);
     sidebarBtn.appendChild(closeMenuIcon);
@@ -114,5 +127,5 @@ function addQuickButtons() {
 }
 
 insertStyle(sidebarRules);
-initializeSidebar(valikko, sulje);
+initializeSidebar();
 addQuickButtons();

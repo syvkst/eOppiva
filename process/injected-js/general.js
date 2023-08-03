@@ -40,8 +40,21 @@ function findThemeSetting(localStorageTheme, systemSettingDark) {
   return "light";
 }
 
+function updateThemeImages(theme) {
+  const themeImages = document.querySelectorAll("img.themed");
+  for (let img of themeImages) {
+    if (theme === "dark") {
+      img.src = img.dataset.dark ? img.dataset.dark : img.src;
+      continue;
+    }
+
+    img.src = img.dataset.light ? img.dataset.light : img.src;
+  }
+}
+
 function updateTheme(theme) {
   document.querySelector("html").setAttribute("data-sytheme", theme);
+  updateThemeImages(theme);
 }
 
 function initializeTheme() {

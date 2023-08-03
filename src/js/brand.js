@@ -1,18 +1,21 @@
 const brandRules =
   "# inject:../../process/min-styles/brand.min.css -> <- end #";
 
-function initializeBrand(logoUrl, faviconUrl) {
+function initializeBrand(logoUrl, logoLightUrl, faviconUrl) {
   const brand = document.getElementsByClassName("navbar-brand")[0];
   brand.innerHTML = "";
 
-  const brand_img = document.createElement("img");
-  brand_img.src = logoUrl;
+  const brandImg = document.createElement("img");
+  brandImg.classList.add("themed");
+  brandImg.src = logoUrl;
+  brandImg.dataset.light = logoLightUrl;
+  brandImg.dataset.dark = logoUrl;
 
-  brand.appendChild(brand_img);
+  brand.appendChild(brandImg);
 
   const link = document.querySelector("link[rel~='icon']");
   link.href = faviconUrl;
 }
 
 insertStyle(brandRules);
-initializeBrand(logo, favicon);
+initializeBrand(logo, logoVaalea, favicon);
