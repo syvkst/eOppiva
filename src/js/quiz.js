@@ -103,6 +103,13 @@ function displayQuestion(quiz) {
     }
     answerButton.innerHTML = question.answers[i].text;
     answerButton.onclick = function (e) {
+      if (
+        e.target.classList.contains("option-correct") ||
+        e.target.classList.contains("option-false")
+      ) {
+        return;
+      }
+
       if (e.target.classList.contains("correct")) {
         quiz.score += 1;
       }

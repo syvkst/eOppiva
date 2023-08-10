@@ -1,5 +1,15 @@
+[data-sytheme="dark"] {
+  --sy_timeline_content_bg: var(--sy_level_2);
+  --sy_timeline_content_fg: var(--sy_font_color);
+}
+
+[data-sytheme="light"] {
+  --sy_timeline_content_bg: var(--sy_light);
+  --sy_timeline_content_fg: var(--sy_font_color);
+}
+
 .timeline {
-  width: 80%;
+  width: 100%;
   height: auto;
   max-width: 800px;
   margin: 0 auto;
@@ -9,16 +19,16 @@
 }
 
 .timeline-content {
-  background: var(--sy_level_1);
+  background: var(--sy_timeline_content_bg);
   box-shadow: var(--sy_shadow_1_x) var(--sy_shadow_1_y) var(--sy_shadow_1_blur)
       var(--sy_shadow_1_spread) var(--sy_shadow_1_color),
     var(--sy_shadow_2_x) var(--sy_shadow_2_y) var(--sy_shadow_2_blur)
       var(--sy_shadow_2_spread) var(--sy_shadow_2_color);
   border-radius: 5px;
-  color: var(--sy_font_color);
+  color: var(--sy_timeline_content_fg);
   padding: 0.5rem 1.75rem 1.75rem 1.75rem;
   overflow-wrap: break-word !important;
-  margin: 0 1rem 1rem 1rem;
+  margin: 0 1% 1rem 1%;
   border-radius: 6px;
   transform: translateY(150px);
   opacity: 0;
@@ -51,18 +61,27 @@
   transition: all 2s ease 0.5s;
 }
 
-.timeline-arrow.active {
+.timeline-arrow:not(:last-child).active {
   opacity: 1;
 }
 
-.timeline-arrow.show {
+.timeline-arrow:not(:last-child).show {
   opacity: 1;
 }
 
-@media screen and (min-width: 700px) {
+.timeline-content-last {
+  border: 3px solid var(--sy_red_regular);
+}
+
+@media screen and (min-width: 767.98px) {
   .timeline {
     display: grid;
     grid-template-columns: 1fr 3px 1fr;
+    margin-top: 1rem;
+  }
+
+  .timeline-content {
+    margin: 0 1.75rem 1rem 1.75rem;
   }
 
   .timeline-content-last {
@@ -70,7 +89,6 @@
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
-    border: 3px solid var(--sy_red_regular);
   }
 
   .timeline-middle {

@@ -6,7 +6,7 @@ function initializeAccordions() {
 
   for (i = 0; i < accordions.length; i++) {
     accordions[i].addEventListener("click", function () {
-      this.classList.toggle("accordion-active");
+      this.classList.toggle("active");
 
       const panel = this.nextElementSibling;
       panel.classList.toggle("accordion-panel-open");

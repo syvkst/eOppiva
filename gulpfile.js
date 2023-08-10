@@ -3,6 +3,11 @@ const cleanCSS = require("gulp-clean-css");
 const inject = require("gulp-inject");
 const rename = require("gulp-rename");
 const uglify = require("gulp-uglify");
+const less = require("gulp-less");
+
+function convertLess() {
+  return src(["src/less/**/*.less"]).pipe(less()).pipe(dest("src/styles"));
+}
 
 function minifyCss() {
   return src(["src/styles/*.css"])
@@ -50,4 +55,10 @@ function injectJs() {
     .pipe(dest("dist/scripts"));
 }
 
-exports.default = series(minifyCss, injectMinifiedCss, minifyJs, injectJs);
+exports.default = series(
+  convertLess,
+  minifyCss,
+  injectMinifiedCss,
+  minifyJs,
+  injectJs
+);

@@ -14,17 +14,36 @@ function insertStyle(rules) {
 }
 
 function createCourseSubheader() {
-  const syNimi = document.getElementById("sy-nimi");
+  const header = document.getElementById("page-header");
+  const phh = header.querySelector(".page-header-headings");
 
-  if (syNimi) {
-    const header = document.getElementById("page-header");
-    const phh = header.querySelector(".page-header-headings");
+  const activeMain = document.querySelector(
+    ".tabs-wrapper .nav-tabs .nav-item .nav-link.active"
+  );
+  const activeSub = document.querySelector(
+    ".onetopic-tab-body .nav-tabs .nav-item:not(.tab_initial) .nav-link.active"
+  );
 
-    const sytxt = document.createElement("p");
-    sytxt.innerHTML = syNimi.innerText;
-    sytxt.classList.add("sub-page-header");
+  if (activeMain) {
+    const mainTitle = document.createElement("h2");
+    mainTitle.innerHTML = activeMain.title;
+    mainTitle.classList.add("sub-page-header-main");
+    phh.appendChild(mainTitle);
+  }
 
-    phh.appendChild(sytxt);
+  if (activeSub) {
+    const separator = document.createElement("i");
+    separator.classList.add(
+      "fa",
+      "fa-arrow-right",
+      "sub-page-header-separator"
+    );
+    phh.appendChild(separator);
+
+    const subTitle = document.createElement("h3");
+    subTitle.innerHTML = activeSub.title;
+    subTitle.classList.add("sub-page-header-sub");
+    phh.appendChild(subTitle);
   }
 }
 
@@ -81,12 +100,35 @@ function initializeTheme() {
   });
 }
 
+function hideEmptyDescription() {
+  const desc = document.querySelector('.my-3[data-for="sectioninfo"]');
+  if (!desc) return;
+
+  if (!desc.querySelector(".summarytext")) {
+    desc.style.display = "none";
+    return;
+  }
+
+  const children = desc.querySelector(".no-overflow").children;
+
+  if (
+    children.length > 1 ||
+    children[0].nodeName.toLowerCase() !== "p" ||
+    children[0].innerText.trim()
+  ) {
+    return;
+  }
+
+  desc.style.display = "none";
+}
+
 document.getElementById("page-course-view-onetopic").style.display = "none";
 
 window.addEventListener("DOMContentLoaded", function () {
   document.getElementById("page-course-view-onetopic").style.display = "block";
   const localStorageTheme = localStorage.getItem("sytheme");
   updateThemeImages(localStorageTheme);
+  hideEmptyDescription();
 });
 
 createStyle();
