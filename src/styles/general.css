@@ -334,16 +334,16 @@ iframe {
 /* VIDEOS AND OTHER MEDIA */
 
 .mediaplugin {
-  border-radius: 10px;
+  border-radius: 0.25rem;
   overflow: hidden;
 }
 
 #region-main .mediaplugin {
-  max-width: 90%;
+  max-width: 98%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1rem;
-  border-radius: 10px;
+  border-radius: 0.25rem;
   box-shadow: var(--sy_shadow_1_x) var(--sy_shadow_1_y) var(--sy_shadow_1_blur)
       var(--sy_shadow_1_spread) var(--sy_shadow_1_color),
     var(--sy_shadow_2_x) var(--sy_shadow_2_y) var(--sy_shadow_2_blur)
@@ -352,10 +352,20 @@ iframe {
 }
 
 #region-main .h5p-placeholder {
-  max-width: 90%;
+  max-width: 98%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1rem;
+}
+
+@media (min-width: 767.98px) {
+  #region-main .mediaplugin {
+    max-width: 90%;
+  }
+
+  #region-main .h5p-placeholder {
+    max-width: 90%;
+  }
 }
 
 /* PAGE */
